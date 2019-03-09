@@ -23,6 +23,9 @@
       </file>
     </leaf>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -35,6 +38,7 @@
     <option name="width" value="697" />
     <option name="height" value="745" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -49,6 +53,17 @@
               <item name="ECSE428AssignmentB" type="b2602c69:ProjectViewProjectNode" />
               <item name="ECSE428AssignmentB" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ECSE428AssignmentB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ECSE428AssignmentB" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ECSE428AssignmentB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ECSE428AssignmentB" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -58,7 +73,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552094817418" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552095593420" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -84,16 +99,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1552093413506</updated>
-      <workItem from="1552093415998" duration="1391000" />
+      <workItem from="1552093415998" duration="1970000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1391000" />
+    <option name="totallyTimeSpent" value="1970000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="676" y="0" width="697" height="745" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" />
       <window_info id="Image Layers" />
@@ -101,7 +115,7 @@
       <window_info id="UI Designer" />
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Learn" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14756672" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3265306" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
