@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
 public class StepDefinitions {
 	
 	private WebDriver driver;
@@ -53,11 +52,11 @@ public class StepDefinitions {
 	    throw new cucumber.api.PendingException();
 	}
 
-	@When("I press ?AttachFile?")
-	public void i_press_AttachFile() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new cucumber.api.PendingException();
-	}
+//	@When("I press ?AttachFile?")
+//	public void i_press_AttachFile() {
+//	    // Write code here that turns the phrase above into concrete actions
+//	    throw new cucumber.api.PendingException();
+//	}
 
 	@Then("the file is included in the email")
 	public void the_file_is_included_in_the_email() {
