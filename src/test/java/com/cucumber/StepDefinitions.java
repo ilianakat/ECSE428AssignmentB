@@ -1,13 +1,24 @@
 package com.cucumber;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class StepDefinitions {
 	
+	private WebDriver driver;
+	private WebDriverWait wait;
+	
 	@Given("I am writing a new message")
 	public void i_am_writing_a_new_message() {
+		
+		driver = new ChromeDriver();
+		wait = (new WebDriverWait(driver, 5));
+		
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new cucumber.api.PendingException();
 	}
