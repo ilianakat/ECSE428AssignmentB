@@ -26,16 +26,15 @@ Feature: Send an email with an attachment
 	And I am writing a new message
 	And the message is to <emailAddress>
 	When I press on the button Attach File
-	And I select a file <typeOfFile> from my file explorer
-	And the file is <sizeOfFile>
+	And I select a file <file> from my file explorer
 	Then the file will should be included as a Google Drive file
 
     Examples: 
-#      | emailAddress  			| typeOfFile | sizeOfFile |
-#      | john.doe@gmail.com	|     png 	 |		12			|
-#      | john.doe@gmail.com	|     png    |		35			|
-#      | john.doe@gmail.com	|     jpg    |		15			|
-#      | john.doe@gmail.com	|     jpg    |		29			|
-#      | john.doe@gm					|     png    |		5				|
+#      | emailAddress  			| file |
+#      | john.doe@gmail.com	|     png 	 |
+#      | john.doe@gmail.com	|     png    |
+#      | john.doe@gmail.com	|     jpg    |
+#      | john.doe@gmail.com	|     jpg    |
+#      | john.doe@gm					|     png    |
 
 
