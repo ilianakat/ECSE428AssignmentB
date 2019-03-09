@@ -31,11 +31,11 @@ Feature: Send an email with an attachment
 	Then the file will should be included as a Google Drive file
 
     Examples: 
-      | emailAddress  			| typeOfFile | sizeOfFile |
-      | john.doe@gmail.com	|     png 	 |		12			|
-      | john.doe@gmail.com	|     png    |		35			|
-      | john.doe@gmail.com	|     jpg    |		15			|
-      | john.doe@gmail.com	|     jpg    |		29			|
-      | john.doe@gm					|     png    |		5				|
+#      | emailAddress  			| typeOfFile | sizeOfFile |
+#      | john.doe@gmail.com	|     png 	 |		12			|
+#      | john.doe@gmail.com	|     png    |		35			|
+#      | john.doe@gmail.com	|     jpg    |		15			|
+#      | john.doe@gmail.com	|     jpg    |		29			|
+#      | john.doe@gm					|     png    |		5				|
 
 

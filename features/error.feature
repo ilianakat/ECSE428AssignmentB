@@ -31,9 +31,9 @@ Feature: Send an email with an attachment
 	And the message cannot be sent due to invalid email address
 
     Examples: 
-      | emailAddress  			| typeOfFile | sizeOfFile |
-      | john.doe@gmail.com	|     png 	 |		12			|
-      | john.doe@gmail.com	|     png    |		35			|
-      | john.doe@gmail.com	|     jpg    |		15			|
-      |  john.doe@gmail.com	|     jpg    |		29			|
-      | john.doe@gm					|     png    |		5				|
+#      | emailAddress  			| typeOfFile | sizeOfFile |
+#      | john.doe@gmail.com	|     png 	 |		12			|
+#      | john.doe@gmail.com	|     png    |		35			|
+#      | john.doe@gmail.com	|     jpg    |		15			|
+#      |  john.doe@gmail.com	|     jpg    |		29			|
+#      | john.doe@gm					|     png    |		5				|

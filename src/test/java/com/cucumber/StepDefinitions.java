@@ -1,5 +1,7 @@
 package com.cucumber;
 
+import java.net.MalformedURLException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,14 +14,20 @@ public class StepDefinitions {
 	private WebDriver driver;
 	private WebDriverWait wait;
 	
-	private String GMAIL_URL = "https://mail.google.com/mail/u/0/#inbox";
-	private String NEW_MESSAGE_URL = "https://mail.google.com/mail/u/0/#inbox?compose=new";
+	private final String GMAIL_URL = "https://mail.google.com/mail/u/0/#inbox";
+	private final String NEW_MESSAGE_URL = "https://mail.google.com/mail/u/0/#inbox?compose=new";
+	
+	private final String PATH_TO_CHROME_DRIVER = System.getProperty("user.dir") + "/chromedriver.exe";;
 
 
 	@Given("I am logged into a Gmail account as a user")
 	public void i_am_logged_into_a_Gmail_account_as_a_user() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new cucumber.api.PendingException();
+		try {
+			setupSeleniumWebDrivers();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/*
@@ -85,4 +93,16 @@ public class StepDefinitions {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new cucumber.api.PendingException();
 	}
+	
+	
+	//helper methods
+    private void setupSeleniumWebDrivers() throws MalformedURLException {
+        if (driver == null) {
+            System.out.println("Setting up ChromeDriver... ");
+            System.setProperty("webdriver.chrome.driver", PATH_TO_CHROME_DRIVER);
+            driver = new ChromeDriver();
+            System.out.print("Completed\n");
+        }
+    }
+	
 }
