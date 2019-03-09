@@ -6,39 +6,62 @@ import cucumber.api.java.en.When;
 
 public class StepDefinitions {
 	
-	
-	@Given("I am logged into a Gmail account")
-	public void i_am_logged_into_a_Gmail_account() {
+	@Given("I am writing a new message")
+	public void i_am_writing_a_new_message() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new cucumber.api.PendingException();
 	}
 
-	@When("I press ?New Message?")
-	public void i_press_New_Message() {
+	@When("I press ?Attach File?")
+	public void i_press_Attach_File() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new cucumber.api.PendingException();
 	}
 
-	@When("I specify a recipient")
-	public void i_specify_a_recipient() {
+	@When("I select a file from my file explorer")
+	public void i_select_a_file_from_my_file_explorer() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new cucumber.api.PendingException();
 	}
 
-	@When("I select a file to attach")
-	public void i_select_a_file_to_attach() {
+	@When("the file exceeds <value> MB")
+	public void the_file_exceeds_value_MB() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new cucumber.api.PendingException();
 	}
 
-	@When("I press ?send?")
-	public void i_press_send() {
+	@Then("the file will be included as a Google Drive file")
+	public void the_file_will_be_included_as_a_Google_Drive_file() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new cucumber.api.PendingException();
 	}
 
-	@Then("the email should be sent.")
-	public void the_email_should_be_sent() {
+	@Given("the message is to an invalid email")
+	public void the_message_is_to_an_invalid_email() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new cucumber.api.PendingException();
+	}
+
+	@When("I press ?AttachFile?")
+	public void i_press_AttachFile() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new cucumber.api.PendingException();
+	}
+
+	@Then("the file is included in the email")
+	public void the_file_is_included_in_the_email() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new cucumber.api.PendingException();
+	}
+
+	@Then("the message cannot be sent due to invalid email address")
+	public void the_message_cannot_be_sent_due_to_invalid_email_address() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new cucumber.api.PendingException();
+	}
+
+	@Then("the email can be sent")
+	public void the_email_can_be_sent() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new cucumber.api.PendingException();
 	}
