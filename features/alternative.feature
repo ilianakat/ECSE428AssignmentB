@@ -19,22 +19,23 @@
 @tag
 Feature: Send an email with an attachment
 
+		#ALTERNATIVE FLOW
   @tag1
-  Scenario: Sending an email with an attachment through Drive
-Given I am writing a new message
-When I press “Attach File”
-And I select a file from my file explorer
-And the file exceeds <value> MB
-Then the file will be included as a Google Drive file
+  Scenario Outline: Sending an email with an attachment through Drive
+	Given I am logged into a Gmail account as a user
+	And I am writing a new message
+	And the message is to <emailAddress>
+	When I press on the button Attach File
+	And I select a file <typeOfFile> from my file explorer
+	And the file is <sizeOfFile>
+	Then the file will should be included as a Google Drive file
+
+    Examples: 
+      | emailAddress  			| typeOfFile | sizeOfFile |
+      | john.doe@gmail.com	|     png 	 |		12			|
+      | john.doe@gmail.com	|     png    |		35			|
+      | john.doe@gmail.com	|     jpg    |		15			|
+      | john.doe@gmail.com	|     jpg    |		29			|
+      | john.doe@gm					|     png    |		5				|
 
 
-#  @tag2
-#  Scenario Outline: Title of your scenario outline
-#    Given I want to write a step with <name>
-#    When I check for the <value> in step
-#    Then I verify the <status> in step
-
-#    Examples: 
-#      | name  | value | status  |
-#      | name1 |     5 | success |
-#      | name2 |     7 | Fail    |

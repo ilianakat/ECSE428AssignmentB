@@ -19,12 +19,21 @@
 @tag
 Feature: Send an email with an attachment
 
+	#ERROR FLOW
   @tag1
-  Scenario: Sending an email with an attachment to an invalid recipient
-		Given I am writing a new message
-		And the message is to an invalid email
-		When I press “AttachFile”
-		And I select a file from my file explorer
-		Then the file is included in the email
-		And the message cannot be sent due to invalid email address
+  Scenario Outline: Sending an email with an attachment to an invalid recipient
+	Given I am logged into a Gmail account as a user
+	And I am writing a new message
+	And the message is to <emailAddress>
+	When I press on the button Attach File
+	And I select a file <typeOfFile>  from my file explorer
+	Then the file is included in the email
+	And the message cannot be sent due to invalid email address
 
+    Examples: 
+      | emailAddress  			| typeOfFile | sizeOfFile |
+      | john.doe@gmail.com	|     png 	 |		12			|
+      | john.doe@gmail.com	|     png    |		35			|
+      | john.doe@gmail.com	|     jpg    |		15			|
+      |  john.doe@gmail.com	|     jpg    |		29			|
+      | john.doe@gm					|     png    |		5				|
