@@ -1,6 +1,8 @@
 package com.cucumber;
 
 import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -33,6 +35,9 @@ public class StepDefinitions {
 	private final String CLASS_ATTACHMENT = "a1";
 	private final String XPATH_ATTACHMENT = "//input[@type='file']";
 	private final String CLASS_SEND = "gU";
+	
+	
+	private String[] emailExtension = {"@gmail.fr", "@gmail.com", "@gmail.ca", "@mail.mcgill.ca", "@yahoo.ca", "@yahoo.com"};
 
 	@Given("^I am logged into a Gmail account as a user$")
 	public void i_am_logged_into_a_Gmail_account_as_a_user() {
@@ -84,6 +89,8 @@ public class StepDefinitions {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
+		
 		driver.findElement(By.className(CLASS_MESSAGE_TO)).sendKeys(emailAddress);
 		driver.findElement(By.className(CLASS_SUBJECT)).sendKeys("Send with attachment");
 	}

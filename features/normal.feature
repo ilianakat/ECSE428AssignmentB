@@ -30,9 +30,9 @@ Feature: Send an email with an attachment
 	Then the email can be sent
 
     Examples: 
-      | 	emailAddress 			| 		file		 |
-      | john.doe@gmail.com	|smallImage.jpg|
-#      | john.doe@gmail.com	|     png    |
-#      | john.doe@gmail.com	|     jpg    |
-#      | john.doe@gmail.com	|     jpg    |
-#      | john.doe@gm					|     png    |
+      | 	emailAddress 			| 		file			|
+      | john.doe@gmail.com	|smallImage.jpg	|
+#      | john.doe2@gmail.com	|smallImage.jpg	|
+#      | john.doe@gm					|largeImage.jpg	|
+#      | john.doe@gmail.com	|largeImage.jpg	|
+#      | john.doe@gm					|other.peg			|
