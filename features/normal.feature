@@ -24,14 +24,14 @@ Feature: Send an email with an attachment
 	Scenario Outline: Sending an email with an attachment
 	Given I am logged into a Gmail account as a user
 	And I am writing a new message
-	And the message is to <emailAddress>
+	And the message is to "<emailAddress>"
 	When I press on the button Attach File
-	And I select a file <file> from my file explorer
+	And I select a file "<file>" from my file explorer
 	Then the file is included in the email
 	And the email can be sent
 
     Examples: 
-      | emailAddress  			| 		file		 |
+      | 	emailAddress  		| 		file		 |
       | john.doe@gmail.com	|smallImage.png|
 #      | john.doe@gmail.com	|     png    |
 #      | john.doe@gmail.com	|     jpg    |
