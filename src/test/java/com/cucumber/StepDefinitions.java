@@ -47,7 +47,6 @@ public class StepDefinitions {
 		}
 		goTo(GMAIL_URL);
 
-		//enter email
 		driver.findElement(By.className(CLASS_EMAIL_PASSWORD)).sendKeys(EMAIL);
 		WebElement nextBTN = (new WebDriverWait(driver, 5))
 				.until(ExpectedConditions.elementToBeClickable(By.className(CLASS_NEXT)));
@@ -59,7 +58,6 @@ public class StepDefinitions {
 			e.printStackTrace();
 		}
 
-		//enter password
 		driver.findElement(By.className(CLASS_EMAIL_PASSWORD)).sendKeys(PASSWORD);
 		nextBTN = (new WebDriverWait(driver, 5))
 				.until(ExpectedConditions.elementToBeClickable(By.className(CLASS_NEXT)));
@@ -78,9 +76,6 @@ public class StepDefinitions {
 		btn.click();
 	}
 
-	/*
-	 * VAlid email
-	 */
 	@Given("^the message is to \"([^\"]*)\"$")
 	public void the_message_is_to_john_doe_gmail_com(String emailAddress) {
 		try {
@@ -89,15 +84,8 @@ public class StepDefinitions {
 			e.printStackTrace();
 		}
 		
-		
 		driver.findElement(By.className(CLASS_MESSAGE_TO)).sendKeys(emailAddress);
 		driver.findElement(By.className(CLASS_SUBJECT)).sendKeys("Send with attachment");
-	}
-	
-	@Given("the message is to an invalid \"([^\"]*)\"$")
-	public void the_message_is_to_an_invalid(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new cucumber.api.PendingException();
 	}
 
 	@When("^I press on the button Attach File$")
