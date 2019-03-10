@@ -62,6 +62,21 @@ Feature: Send an email with an attachment
       | kathuyilimar@gmail.com|smallImage.jpg	|john.doe@gmail.com	|
       | kathuyilimar@gmail.com|IMG_3093.JPG		|john.doe2@gmail.com|
       
+		#ALTERNATIVE FLOW
+  Scenario Outline: Sending an email with multiple attachment
+	Given I am logged into a Gmail account as a user
+	And I am writing a new message
+	And the message is to "<emailAddress>"
+	When I press on the button Attach File
+	And I select a file "<file>" from my file explorer
+	And I select another file "<file2>" from my file explorer
+	Then the email can be sent
+
+    Examples: 
+      | emailAddress  			| file 					| file2				|
+      | john.doe@gmail.com	|smallImage.jpg	|	IMG_3093.JPG|
+      | john.doe2@gmail.com	|IMG_3093.JPG		|20181208.png	|
+      
 	#ERROR FLOW
   Scenario Outline: Sending an email with an attachment to an invalid recipient
 	Given I am logged into a Gmail account as a user

@@ -1,8 +1,6 @@
 package com.cucumber;
 
 import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.net.MalformedURLException;
 
 import org.junit.Assert;
@@ -114,7 +112,7 @@ public class StepDefinitions {
 	/*
 	 * Not actually browsing through the file directory. Takes a files from the project itself
 	 * sleep to let it complete the task
-	 * TODO click on open first, issue with the file browser
+	 * click on open first, issue with the file browser
 	 */
 	@When("^I press on the button Attach File$")
 	public void i_press_on_the_button_Attach_File() {
@@ -133,9 +131,27 @@ public class StepDefinitions {
 	@When("^I select a file \"([^\"]*)\" from my file explorer$")
 	public void i_select_a_file_from_my_file_explorer(String file) {
 		//line after, going directly in the project's folder
+
+		
 		driver.findElement(By.xpath(XPATH_ATTACHMENT)).sendKeys(IMAGEPATH+file);
+			try {
+				Thread.sleep(20000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+	}
+	
+	/**
+	 * if a second attachment is added
+	 * @param string
+	 */
+	@When("^I select another file \"([^\"]*)\" from my file explorer$")
+	public void i_select_another_file_from_my_file_explorer(String file2) {
+		//line after, going directly in the project's folder
+		driver.findElement(By.xpath(XPATH_ATTACHMENT)).sendKeys(IMAGEPATH+file2);
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(20000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
