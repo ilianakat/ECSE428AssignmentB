@@ -30,8 +30,8 @@ Feature: Send an email with an attachment
 
     Examples: 
       | 	emailAddress 			| 		file			|
- #     | john.doe@gmail.com	|smallImage.jpg	|
- #     |john.doe2@gmail.com	|IMG_3093.JPG		|
+#      | john.doe@gmail.com	|smallImage.jpg	|
+#      |john.doe2@gmail.com	|IMG_3093.JPG		|
       
 	#ERROR FLOW
   Scenario Outline: Sending an email with an attachment to an invalid recipient
