@@ -33,6 +33,8 @@ public class StepDefinitions {
 	private final String CLASS_NEXT = "qhFLie";
 	private final String CLASS_NEW_MESSAGE = "z0";
 	private final String CLASS_MESSAGE_TO = "vO";
+	private final String CLASS_CC = "aB gQ pE";
+	private final String ID_CC = ":l7";
 	private final String CLASS_SUBJECT = "aoT";
 	private final String CLASS_ATTACHMENT = "a1";
 	private final String XPATH_ATTACHMENT = "//input[@type='file']";
@@ -96,15 +98,32 @@ public class StepDefinitions {
 	}
 
 	@Given("^the message is to \"([^\"]*)\"$")
-	public void the_message_is_to_john_doe_gmail_com(String emailAddress) {
+	public void the_message_is_to(String emailAddress) {
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
 		driver.findElement(By.className(CLASS_MESSAGE_TO)).sendKeys(emailAddress);
-		driver.findElement(By.className(CLASS_SUBJECT)).sendKeys("Send with attachment");
+	}
+	
+	@Given("^the message is in CC to \"([^\"]*)\"$")
+	public void the_message_is_in_CC_to(String ccEmailAddress) {
+		System.out.println("CC");
+		WebElement btn = (new WebDriverWait(driver, 10))
+				.until(ExpectedConditions.elementToBeClickable(By.id(ID_CC)));
+		btn.click();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		driver.findElement(By.className(CLASS_MESSAGE_TO)).sendKeys(ccEmailAddress);
+		
+	}
+	@Given("the subject is \"([^\"]*)\"$")
+	public void the_subject_is(String subject) {
+		driver.findElement(By.className(CLASS_SUBJECT)).sendKeys(subject);
 	}
 
 	/*
