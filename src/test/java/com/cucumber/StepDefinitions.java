@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,7 +23,7 @@ public class StepDefinitions {
 	
 	private final String GMAIL_URL = "https://mail.google.com/mail/u/0/#inbox";
 
-	private final String IMAGE = System.getProperty("user.dir") + "/attachments/";
+	private final String IMAGEPATH = System.getProperty("user.dir") + "/attachments/";
 
 	private final String EMAIL = "kathuyilimar@gmail.com";
 	private final String PASSWORD = "ECSE428!";
@@ -34,11 +35,9 @@ public class StepDefinitions {
 	private final String CLASS_SUBJECT = "aoT";
 	private final String CLASS_ATTACHMENT = "a1";
 	private final String XPATH_ATTACHMENT = "//input[@type='file']";
+	private final String CLASS_DRIVE = "Kj-JD-Jh";
 	private final String CLASS_SEND = "gU";
 	
-	
-	private String[] emailExtension = {"@gmail.fr", "@gmail.com", "@gmail.ca", "@mail.mcgill.ca", "@yahoo.ca", "@yahoo.com"};
-
 	@Given("^I am logged into a Gmail account as a user$")
 	public void i_am_logged_into_a_Gmail_account_as_a_user() {
 		try {
@@ -94,14 +93,11 @@ public class StepDefinitions {
 		driver.findElement(By.className(CLASS_MESSAGE_TO)).sendKeys(emailAddress);
 		driver.findElement(By.className(CLASS_SUBJECT)).sendKeys("Send with attachment");
 	}
-
-	/* TODO maybe not even necessary as it used the same as above...
-	 * Invalid email
-	 */
-	@Given("the message is to john.doe@gm")
-	public void the_message_is_to_john_doe_gm() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new cucumber.api.PendingException();
+	
+	@Given("the message is to an invalid \"([^\"]*)\"$")
+	public void the_message_is_to_an_invalid(String string) {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new cucumber.api.PendingException();
 	}
 
 	@When("^I press on the button Attach File$")
@@ -129,31 +125,13 @@ public class StepDefinitions {
 		
 		//TODO click on open first, issue with the file browser
 		//line after, going directly in the project's folder
-        driver.findElement(By.xpath(XPATH_ATTACHMENT)).sendKeys(IMAGE+file);
+        driver.findElement(By.xpath(XPATH_ATTACHMENT)).sendKeys(IMAGEPATH+file);
 		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
-
-//	/**
-//	 * valid extension and size attachment
-//	 */
-//	@When("I select a file smallImage.png from my file explorer")
-//	public void i_select_a_file_smallImage_png_from_my_file_explorer() {
-//		driver.findElement(By.id("attachment")).sendKeys("C:\\Users\\Marine\\AI\\ECSE428AssignmentB\\attachments\\smallImage.jpg");
-//		//driver.findElement(By.className("//input[@type='file']")).sendKeys(IMAGE1);
-//	}
-//	
-//	/**
-//	 * invalid extension and size attachment
-//	 */
-//	@When("I select a file largeImage.png from my file explorer")
-//	public void i_select_a_file_largeImage_png_from_my_file_explorer() {
-//	    // Write code here that turns the phrase above into concrete actions
-//	    throw new cucumber.api.PendingException();
-//	}
 	
 //	@Then("the file is included in the email")
 //	public void the_file_is_included_in_the_email() {
@@ -177,24 +155,48 @@ public class StepDefinitions {
 				.until(ExpectedConditions.elementToBeClickable(By.className(CLASS_SEND)));
 		btn.click();
 	}
-
+	
 	/*
-	 * Case when it is larger than 25MB
+	 * does not send the email
 	 */
-	@Then("^the file will should be included as a Google Drive file$")
-	public void the_file_will_should_be_included_as_a_Google_Drive_file() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new cucumber.api.PendingException();
+	@Then("the message cannot be sent due to invalid email address")
+	public void the_message_cannot_be_sent_due_to_invalid_email_address() {
+		try {
+			WebElement btn = (new WebDriverWait(driver, 10))
+					.until(ExpectedConditions.elementToBeClickable(By.className(CLASS_SEND)));
+			driver.quit();
+		}catch (Exception e) {
+			Assert.fail("invalid email as recipient");
+		}
 	}
 
+	/*	TODO
+	 * Case when it is larger than 25MB
+	 */
+	@Then("^the file will be included as a Google Drive file$")
+	public void the_file_will_be_included_as_a_Google_Drive_file() {
+		WebElement btn = (new WebDriverWait(driver, 30))
+				.until(ExpectedConditions.elementToBeClickable(By.className(CLASS_DRIVE)));
+		btn.click();
+		System.out.println("debug: button for drive reached");
+		try {
+			System.out.println("debug: sleep 20000");
+			Thread.sleep(20000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		btn = (new WebDriverWait(driver, 10))
+				.until(ExpectedConditions.elementToBeClickable(By.className(CLASS_SEND)));
+		btn.click();
+		System.out.println("debug: button for send reached");
+	}
 
 	//helper methods
 	private void setupSeleniumWebDrivers() throws MalformedURLException {
 		if (driver == null) {
-			System.out.println("Setting up ChromeDriver... ");
 			System.setProperty("webdriver.chrome.driver", PATH_TO_CHROME_DRIVER);
 			driver = new ChromeDriver();
-			System.out.print("Completed\n");
 		}
 	}
 
