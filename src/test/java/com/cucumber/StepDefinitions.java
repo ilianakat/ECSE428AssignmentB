@@ -15,26 +15,28 @@ import cucumber.api.java.en.When;
 public class StepDefinitions {
 
 	private WebDriver driver;
-	private WebDriverWait wait;
-
+	
+	private final String PATH_TO_CHROME_DRIVER = System.getProperty("user.dir") + "/chromedriver.exe";
+	
 	private final String GMAIL_URL = "https://mail.google.com/mail/u/0/#inbox";
-	private final String NEW_MESSAGE_URL = "";
-	//https://mail.google.com/mail/u/0/#inbox?compose=new
+	private final String NEW_MESSAGE_URL = "https://mail.google.com/mail/u/0/#inbox?compose=new";
 
+//useless actually
 	private final String NEW_MESSAGE_BTN = "new-message-button";
 	private final String ADD_FILE_BTN = "add-file-button";
 	private final String SEND_BTN = "send-button";
-
-	private final String PATH_TO_CHROME_DRIVER = System.getProperty("user.dir") + "/chromedriver.exe";
 
 	private final String EMAIL = "kathuyilimar@gmail.com";
 	private final String PASSWORD = "ECSE428!";
 
 	private final String CLASS_EMAIL_PASSWORD = "whsOnd";
 	private final String CLASS_NEXT = "qhFLie";
+	private final String CLASS_NEW_MESSAGE = "z0";
+	private final String CLASS_MESSAGE_TO = "vO";
+	private final String CLASS_SUBJECT = "aoT";
 
 
-	@Given("I am logged into a Gmail account as a user")
+	@Given("^I am logged into a Gmail account as a user$")
 	public void i_am_logged_into_a_Gmail_account_as_a_user() {
 		try {
 			setupSeleniumWebDrivers();
@@ -51,7 +53,7 @@ public class StepDefinitions {
 		nextBTN.click();
 
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -64,22 +66,29 @@ public class StepDefinitions {
 		nextBTN.click();
 
 	}
+	
+	@Given("^I am writing a new message$")
+	public void i_am_writing_a_new_message() {
+		WebElement btn = (new WebDriverWait(driver, 10))
+				.until(ExpectedConditions.elementToBeClickable(By.className(CLASS_NEW_MESSAGE)));
+		btn.click();
+	}
 
 	/*
 	 * VAlid email
 	 */
-	@Given("the message is to john.doe@gmail.com")
-	public void the_message_is_to_john_doe_gmail_com() {
-		driver = new ChromeDriver();
-		wait = (new WebDriverWait(driver, 5));
-		goTo(GMAIL_URL);
-		WebElement btn = (new WebDriverWait(driver, 10))
-				.until(ExpectedConditions.elementToBeClickable(By.id(NEW_MESSAGE_BTN)));
-		btn.click();
-		goTo(NEW_MESSAGE_URL);
+	@Given("^the message is to \"([^\"]*)\"$")
+	public void the_message_is_to_john_doe_gmail_com(String emailAddress) {
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		driver.findElement(By.className(CLASS_MESSAGE_TO)).sendKeys(emailAddress);
+		driver.findElement(By.className(CLASS_SUBJECT)).sendKeys("With Image Attached");
 	}
 
-	/*
+	/* TODO maybe not even necessary as it used the same as above...
 	 * Invalid email
 	 */
 	@Given("the message is to john.doe@gm")

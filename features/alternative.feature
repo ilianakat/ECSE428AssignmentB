@@ -24,9 +24,9 @@ Feature: Send an email with an attachment
   Scenario Outline: Sending an email with an attachment through Drive
 	Given I am logged into a Gmail account as a user
 	And I am writing a new message
-	And the message is to <emailAddress>
+	And the message is to "<emailAddress>"
 	When I press on the button Attach File
-	And I select a file <file> from my file explorer
+	And I select a file "<file>" from my file explorer
 	Then the file will should be included as a Google Drive file
 
     Examples: 
