@@ -91,13 +91,14 @@ public class StepDefinitions {
 
 	/*
 	 * Not actually browsing through the file directory. Takes a files from the project itself
+	 * sleep to let it complete the task
 	 * TODO click on open first, issue with the file browser
 	 */
 	@When("^I press on the button Attach File$")
 	public void i_press_on_the_button_Attach_File() {
 		
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -110,11 +111,11 @@ public class StepDefinitions {
 
 	@When("^I select a file \"([^\"]*)\" from my file explorer$")
 	public void i_select_a_file_from_my_file_explorer(String file) {
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(3000);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 
 		//line after, going directly in the project's folder
         driver.findElement(By.xpath(XPATH_ATTACHMENT)).sendKeys(IMAGEPATH+file);
@@ -156,22 +157,11 @@ public class StepDefinitions {
 	@Then("^the file will be included as a Google Drive file$")
 	public void the_file_will_be_included_as_a_Google_Drive_file() {
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(45000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		System.out.println("longer file has been uploaded");
-//		WebElement btn = (new WebDriverWait(driver, 70))
-//				.until(ExpectedConditions.elementToBeClickable(By.className(CLASS_DRIVE)));
-//		btn.click();
-		System.out.println("debug: button for drive reached");
-		try {
-			Thread.sleep(30000);
-			System.out.println("debug: sleep 30000");
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("ready to send");
 
 		//Send message on the window
 		WebElement btn = (new WebDriverWait(driver, 10))
