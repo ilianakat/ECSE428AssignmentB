@@ -175,51 +175,35 @@ public class StepDefinitions {
 		try {
 			WebElement btn = (new WebDriverWait(driver, 10))
 					.until(ExpectedConditions.elementToBeClickable(By.className(CLASS_SEND)));
+
+			
 			driver.quit();
 		}catch (Exception e) {
 			Assert.fail("invalid email as recipient");
 		}
 	}
 
-	/*	TODO
+	/*
 	 * Case when it is larger than 25MB
 	 */
 	@Then("^the file will be included as a Google Drive file$")
 	public void the_file_will_be_included_as_a_Google_Drive_file() throws AWTException {
 		try {
-			Thread.sleep(45000);
+			Thread.sleep(50000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("longer file has been uploaded");
 
-		//Send message on the window
 		WebElement btn = (new WebDriverWait(driver, 10))
 				.until(ExpectedConditions.elementToBeClickable(By.className(CLASS_SEND)));
 		btn.click();
-		System.out.println("debug: button for send reached");
 
 		try {
 			Thread.sleep(3000);
 			System.out.println("debug: sleep 3000");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}
-		//		btn = (new WebDriverWait(driver, 10))
-		//				.until(ExpectedConditions.elementToBeClickable(By.className(CLASS_SEND_THROUGH_DRIVE)));
-		//		btn.click();
-
-		//Send message as a drive link
-
-//			Robot robot = new Robot();
-//			robot.keyPress(KeyEvent.VK_ENTER);
-
-		
-		btn = (new WebDriverWait(driver, 10))
-				.until(ExpectedConditions.elementToBeClickable(By.className(test)));
-		btn.click();
-
-			
+		}	
 			WebElement sent = (new WebDriverWait(driver, 10))
 					.until(ExpectedConditions.presenceOfElementLocated(By.className(CONFIRM)));
 
@@ -228,7 +212,10 @@ public class StepDefinitions {
 			Assert.assertEquals(driver.getCurrentUrl().toString(), GMAIL_URL);
 	}
 
-	//helper methods
+	/**
+	 * Method to use Selenium and start an instance of ChromeDriver for each test
+	 * @throws MalformedURLException
+	 */
 	private void setupSeleniumWebDrivers() throws MalformedURLException {
 		if (driver == null) {
 			System.setProperty("webdriver.chrome.driver", PATH_TO_CHROME_DRIVER);
@@ -236,6 +223,10 @@ public class StepDefinitions {
 		}
 	}
 
+	/**
+	 * Start at the url for gmail
+	 * @param url
+	 */
 	private void goTo(String url) {
 		if (driver != null) {
 			System.out.println("Going to " + url);

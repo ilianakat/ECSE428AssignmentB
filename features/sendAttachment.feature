@@ -30,8 +30,23 @@ Feature: Send an email with an attachment
 
     Examples: 
       | 	emailAddress 			| 		file			|
-#      | john.doe@gmail.com	|smallImage.jpg	|
-#      |john.doe2@gmail.com	|IMG_3093.JPG		|
+      | john.doe@gmail.com	|smallImage.jpg	|
+      |john.doe2@gmail.com	|IMG_3093.JPG		|
+
+      
+		#ALTERNATIVE FLOW
+  Scenario Outline: Sending an email with an attachment through Drive
+	Given I am logged into a Gmail account as a user
+	And I am writing a new message
+	And the message is to "<emailAddress>"
+	When I press on the button Attach File
+	And I select a file "<file>" from my file explorer
+	Then the file will be included as a Google Drive file
+
+    Examples: 
+      | emailAddress  				| file 					|
+      | kathuyilimar@gmail.com|largeImage1.NEF|
+      | kathuyilimar@gmail.com|largeImage2.NEF|
       
 	#ERROR FLOW
   Scenario Outline: Sending an email with an attachment to an invalid recipient
@@ -44,21 +59,8 @@ Feature: Send an email with an attachment
 	
 	    Examples: 
       | 	emailAddress 			| 		file			|
-#      | john.doe@gma				|smallImage.jpg	|
-#      |john.doe2@gmai				|IMG_3093.JPG		|
-      
-		#ALTERNATIVE FLOW
-  Scenario Outline: Sending an email with an attachment through Drive
-	Given I am logged into a Gmail account as a user
-	And I am writing a new message
-	And the message is to "<emailAddress>"
-	When I press on the button Attach File
-	And I select a file "<file>" from my file explorer
-	Then the file will be included as a Google Drive file
+      | john.doe@gma				|smallImage.jpg	|
+      |john.doe2@gmai				|IMG_3093.JPG		|
 
-    Examples: 
-      | emailAddress  			| file 					|
-      | john.doe@gmail.com	|largeImage1.NEF|
-#      | john.doe2@gmail.com	|largeImage2.NEF|
 
 
