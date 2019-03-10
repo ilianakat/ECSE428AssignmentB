@@ -1,8 +1,6 @@
 package com.cucumber;
 
 import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -35,9 +33,12 @@ public class StepDefinitions {
 	private final String CLASS_SUBJECT = "aoT";
 	private final String CLASS_ATTACHMENT = "a1";
 	private final String XPATH_ATTACHMENT = "//input[@type='file']";
-	private final String CLASS_DRIVE = "Kj-JD-Jh";
-	private final String CLASS_SEND = "gU";
+	private final String CLASS_DRIVE = "Kj-JD-K7-K0";
+	private final String CLASS_SEND_THROUGH_DRIVE = "span";
 	
+	private final String test = "span.quantumWizButtonPaperbuttonLabel.exportLabel";
+	
+	private final String CLASS_SEND = "gU";
 	@Given("^I am logged into a Gmail account as a user$")
 	public void i_am_logged_into_a_Gmail_account_as_a_user() {
 		try {
@@ -88,6 +89,10 @@ public class StepDefinitions {
 		driver.findElement(By.className(CLASS_SUBJECT)).sendKeys("Send with attachment");
 	}
 
+	/*
+	 * Not actually browsing through the file directory. Takes a files from the project itself
+	 * TODO click on open first, issue with the file browser
+	 */
 	@When("^I press on the button Attach File$")
 	public void i_press_on_the_button_Attach_File() {
 		
@@ -110,8 +115,7 @@ public class StepDefinitions {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		//TODO click on open first, issue with the file browser
+
 		//line after, going directly in the project's folder
         driver.findElement(By.xpath(XPATH_ATTACHMENT)).sendKeys(IMAGEPATH+file);
 		try {
@@ -119,20 +123,8 @@ public class StepDefinitions {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		System.out.println("file has been uploaded");
 	}
-	
-//	@Then("the file is included in the email")
-//	public void the_file_is_included_in_the_email() {
-//		//just make sure it has enough time to upload...
-//        try {
-//			Thread.sleep(5000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}  // Wait for upload
-////		WebElement attachment = (new WebDriverWait(driver, 10))
-////                .until(ExpectedConditions.presenceOfElementLocated(By.className(ATTACHMENT_TEXT_FIELD_CHECK)));
-//	}
 	
 	/*
 	 * Send the email 
@@ -163,21 +155,44 @@ public class StepDefinitions {
 	 */
 	@Then("^the file will be included as a Google Drive file$")
 	public void the_file_will_be_included_as_a_Google_Drive_file() {
-		WebElement btn = (new WebDriverWait(driver, 30))
-				.until(ExpectedConditions.elementToBeClickable(By.className(CLASS_DRIVE)));
-		btn.click();
-		System.out.println("debug: button for drive reached");
 		try {
-			System.out.println("debug: sleep 20000");
-			Thread.sleep(20000);
+			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		btn = (new WebDriverWait(driver, 10))
+		System.out.println("longer file has been uploaded");
+//		WebElement btn = (new WebDriverWait(driver, 70))
+//				.until(ExpectedConditions.elementToBeClickable(By.className(CLASS_DRIVE)));
+//		btn.click();
+		System.out.println("debug: button for drive reached");
+		try {
+			Thread.sleep(30000);
+			System.out.println("debug: sleep 30000");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("ready to send");
+
+		//Send message on the window
+		WebElement btn = (new WebDriverWait(driver, 10))
 				.until(ExpectedConditions.elementToBeClickable(By.className(CLASS_SEND)));
 		btn.click();
 		System.out.println("debug: button for send reached");
+		
+		try {
+			Thread.sleep(3000);
+			System.out.println("debug: sleep 3000");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+//		btn = (new WebDriverWait(driver, 10))
+//				.until(ExpectedConditions.elementToBeClickable(By.className(CLASS_SEND_THROUGH_DRIVE)));
+//		btn.click();
+		
+		//Send message as a drive link
+		btn = (new WebDriverWait(driver, 10))
+		.until(ExpectedConditions.elementToBeClickable(By.className(test)));
+btn.click();
 	}
 
 	//helper methods
