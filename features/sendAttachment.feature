@@ -48,6 +48,20 @@ Feature: Send an email with an attachment
       | kathuyilimar@gmail.com|largeImage1.NEF|
       | kathuyilimar@gmail.com|largeImage2.NEF|
       
+		#ALTERNATIVE FLOW
+  Scenario Outline: Sending an email in cc with an attachment
+	Given I am logged into a Gmail account as a user
+	And I am writing a new message
+	And the message is to "<emailAddress>" and in CC to "<ccEmailAddress>"
+	When I press on the button Attach File
+	And I select a file "<file>" from my file explorer
+	Then the email can be sent
+
+    Examples: 
+      | emailAddress  				| file 					| ccEmailAddress		|
+      | kathuyilimar@gmail.com|smallImage.jpg	|john.doe@gmail.com	|
+      | kathuyilimar@gmail.com|IMG_3093.JPG		|john.doe2@gmail.com|
+      
 	#ERROR FLOW
   Scenario Outline: Sending an email with an attachment to an invalid recipient
 	Given I am logged into a Gmail account as a user
