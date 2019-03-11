@@ -29,7 +29,7 @@ Feature: Send an email with an attachment
 	  Then the email can be sent
 
 	  Examples:
-      |      emailAddress      | 	   file		|
+      |      emailAddress      | 	   file					|
       |   john.doe@gmail.com   |   smallImage.jpg	|
       |  john.doe2@gmail.com   |   IMG_3093.JPG		|
 
@@ -44,9 +44,9 @@ Feature: Send an email with an attachment
 	  Then the file will be included as a Google Drive file
 
 	  Examples:
-      |       emailAddress  	   |     file 		 |
-      |   kathuyilimar@gmail.com   |   largeImage1.NEF   |
-      |   kathuyilimar@gmail.com   |   largeImage2.NEF   |
+      |       emailAddress				|     file		 				|
+      |   kathuyilimar@gmail.com	|   largeImage1.NEF   |
+      |   kathuyilimar@gmail.com	|   largeImage2.NEF   |
       
   # ALTERNATIVE FLOW
   Scenario Outline: Sending an email in cc with an attachment
@@ -58,9 +58,9 @@ Feature: Send an email with an attachment
 	  Then the email can be sent
 
 	  Examples:
-      |        emailAddress        |       file         |    ccEmailAddress      |
+      |        emailAddress        |       file       |    ccEmailAddress      |
       |   kathuyilimar@gmail.com   |   smallImage.jpg	|   john.doe@gmail.com   |
-      |   kathuyilimar@gmail.com   |   IMG_3093.JPG	|   john.doe2@gmail.com  |
+      |   kathuyilimar@gmail.com   |   IMG_3093.JPG		|   john.doe2@gmail.com  |
       
   # ALTERNATIVE FLOW
   Scenario Outline: Sending an email with multiple attachment
@@ -73,7 +73,7 @@ Feature: Send an email with an attachment
 	  Then the email can be sent
 
 	  Examples:
-      |       emailAddress      |        file        |       file2      |
+      |       emailAddress    |        file        |       file2      |
       |   john.doe@gmail.com	|   smallImage.jpg   |   IMG_3093.JPG   |
       |   john.doe2@gmail.com	|   IMG_3093.JPG     |   20181208.png   |
       
@@ -87,9 +87,9 @@ Feature: Send an email with an attachment
 	  Then the message cannot be sent due to invalid email address
 
 	  Examples:
-      |   emailAddress     |       file         |
-      |   john.doe@gma     |   smallImage.jpg	|
-      |   john.doe2@gmai   |   IMG_3093.JPG	|
+      |   emailAddress     |       file     	  |
+      |   john.doe@gma     |   smallImage.jpg		|
+      |   john.doe2@gmai   |   IMG_3093.JPG			|
 
 
 
